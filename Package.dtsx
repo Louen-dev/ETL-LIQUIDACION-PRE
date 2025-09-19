@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{2C334745-F05B-48FC-9996-B57E3289EB7F}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{3BAB5F30-ED1B-40A6-8179-188675B627B3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -22,11 +22,13 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{62CAEF74-F480-4588-9C7A-97B74E863A88}"
       DTS:ObjectName="172.17.7.39.ANALITICA.sa">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::ConnStringAnalitica]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=ANALITICA;Provider=SQLNCLI.1;Application Name=SSIS-Package-{62CAEF74-F480-4588-9C7A-97B74E863A88}172.17.7.39.ANALITICA.sa;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=ANALITICA;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -38,11 +40,13 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{5AE27FF9-A535-4934-85D6-189A9C7C7E72}"
       DTS:ObjectName="172.17.7.39.DELIVERY.sa">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::ConnStringDelivery]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=DELIVERY;Provider=SQLNCLI.1;Persist Security Info=True;Application Name=SSIS-Package-{5AE27FF9-A535-4934-85D6-189A9C7C7E72}172.17.7.39.DELIVERY.sa;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=DELIVERY;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -54,11 +58,13 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{1E94FD51-BBC3-4EB1-9A04-E1940568F0B8}"
       DTS:ObjectName="172.17.7.39.ENTITY.sa">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::ConnStringEntity]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=ENTITY;Provider=SQLNCLI.1;Application Name=SSIS-Package-{1E94FD51-BBC3-4EB1-9A04-E1940568F0B8}172.17.7.39.ENTITY.sa;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=ENTITY;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -70,11 +76,13 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{1FE8B69C-81C9-4FBC-864F-45AFB8DF9E05}"
       DTS:ObjectName="172.17.7.39.RAW.sa">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::ConnStringRaw]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=RAW;Provider=SQLNCLI.1;Application Name=SSIS-Package-{1FE8B69C-81C9-4FBC-864F-45AFB8DF9E05}172.17.7.39.RAW.sa;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=172.17.7.39;User ID=sa;Initial Catalog=RAW;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -1674,6 +1682,16 @@
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ANALITICA.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{527FA4C1-BEC7-471D-93C8-EC73D94AAE3B}"
+          DTS:From="Package\ANALITICA\Tarea Ejecutar SQL"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\ANALITICA\Tarea Flujo de datos" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\DELIVERY"
@@ -4192,7 +4210,7 @@ WHERE ot.Estado = 'FINALIZADA';</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\ANALITICA\Tarea Ejecutar SQL"
@@ -4201,13 +4219,35 @@ WHERE ot.Estado = 'FINALIZADA';</property>
           Size="173.6,41.6"
           Id="Package\ANALITICA\Tarea Flujo de datos"
           TopLeft="19.6666485451999,80.266665702396" />
+        <EdgeLayout
+          Id="Package\ANALITICA.PrecedenceConstraints[Restricción]"
+          TopLeft="106.499981833002,54.266666172478">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.999999529918"
+              Start="0,0"
+              End="0,18.499999529918">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.499999529918" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
           PanelSize="236.8,180"
           Size="236.8,223.2"
           Id="Package\ANALITICA"
-          TopLeft="304.666650320921,179.699998788635" />
+          TopLeft="304.666650320921,274.166664798392" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\DELIVERY\Tarea Ejecutar SQL"
@@ -4244,7 +4284,7 @@ WHERE ot.Estado = 'FINALIZADA';</property>
           PanelSize="280.8,200"
           Size="280.8,243.2"
           Id="Package\DELIVERY"
-          TopLeft="595.833300778437,175.933332109915" />
+          TopLeft="595.833300778437,270.399998119672" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\ENTITY\Tarea Ejecutar SQL"
@@ -4272,44 +4312,30 @@ WHERE ot.Estado = 'FINALIZADA';</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="250.4,442.4"
-          Size="250.4,43.2"
+          IsExpanded="True"
+          PanelSize="250.4,160"
+          Size="250.4,203.2"
           Id="Package\ENTITY"
-          TopLeft="20.4999991804361,173.899999276797" />
+          TopLeft="16.333332741426,276.166665232314" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="270.899999180436,195.499999276797">
+          TopLeft="266.733332741426,381.766665015353">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="33.7666511404854,95.7999995118381"
+              EndConnector="37.933317579495,0"
               Start="0,0"
-              End="26.2666511404854,95.7999995118381">
+              End="30.433317579495,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="12.8833255702427,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.8833255702427,0"
-                    Point2="16.8833255702427,0"
-                    Point3="16.8833255702427,4" />
-                  <mssgle:LineSegment
-                    End="16.8833255702427,91.7999995118381" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.8833255702427,91.7999995118381"
-                    Point2="16.8833255702427,95.7999995118381"
-                    Point3="20.8833255702427,95.7999995118381" />
-                  <mssgle:LineSegment
-                    End="26.2666511404854,95.7999995118381" />
+                    End="30.433317579495,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4320,18 +4346,18 @@ WHERE ot.Estado = 'FINALIZADA';</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="541.466650320921,294.416665449275">
+          TopLeft="541.466650320921,388.883331459032">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54.3666504575153,0"
+              EndConnector="54.366650457516,0"
               Start="0,0"
-              End="46.8666504575153,0">
+              End="46.866650457516,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="46.8666504575153,0" />
+                    End="46.866650457516,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4423,15 +4449,15 @@ WHERE ot.Estado = 'FINALIZADA';</property>
     design-time-name="Package\DELIVERY\Tarea Flujo de datos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\DELIVERY\Tarea Flujo de datos\Origen de OLE DB"
-          TopLeft="122.999998167157,34.9999994784594" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168.8,41.6"
           Id="Package\DELIVERY\Tarea Flujo de datos\Destino de OLE DB"
           TopLeft="107.999998390675,153.999997705221" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DELIVERY\Tarea Flujo de datos\Origen de OLE DB"
+          TopLeft="122.999998167157,34.9999994784594" />
         <EdgeLayout
           Id="Package\DELIVERY\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
           TopLeft="205.399998167157,76.5999994784594">
@@ -4463,7 +4489,9 @@ WHERE ot.Estado = 'FINALIZADA';</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4499,7 +4527,7 @@ WHERE ot.Estado = 'FINALIZADA';</property>
     design-time-name="Package\ENTITY\Tarea Flujo de datos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\ENTITY\Tarea Flujo de datos\Origen de OLE DB"
@@ -4527,7 +4555,9 @@ WHERE ot.Estado = 'FINALIZADA';</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
